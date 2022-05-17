@@ -43,7 +43,7 @@ public class EnemyBehavior : MonoBehaviour
                 bulletObj.transform.localScale = new Vector2(-1, 1);
             }
 
-            timer = 5.0f;
+            timer = 3.0f;
         }
     }
 }

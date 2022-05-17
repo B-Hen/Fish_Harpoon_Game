@@ -346,6 +346,7 @@
 "Assets/Scripts/EnemyBehavior.cs"
 "Assets/Scripts/GrappleOnto.cs"
 "Assets/Scripts/HarpoonGrapple.cs"
+"Assets/Scripts/PlayerCollision.cs"
 "Assets/Scripts/PlayerMovement.cs"
 -langversion:8.0
 

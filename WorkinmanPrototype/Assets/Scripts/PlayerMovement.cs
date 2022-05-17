@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rigidBody;
     float forceSpeed;
-    bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -45,14 +44,6 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.A))
         {
             rigidBody.AddForce(rigidBody.velocity * forceSpeed);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.tag == "Bullet")
-        {
-            Debug.Log("hit");
         }
     }
 }

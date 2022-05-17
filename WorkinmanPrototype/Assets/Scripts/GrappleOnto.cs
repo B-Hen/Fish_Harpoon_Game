@@ -8,6 +8,7 @@ public class GrappleOnto : MonoBehaviour
     private LineRenderer line;
     private DistanceJoint2D joint;
     public Sprite enemyDead;
+    private GameObject trout;
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +36,17 @@ public class GrappleOnto : MonoBehaviour
         //set the line renderer to true as well
         line.enabled = true;
 
+        //check to see if you grappled onto the enemy if so change the sprite and disable the enemy
         if (gameObject.tag == "Enemy")
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = enemyDead;
             gameObject.GetComponent<EnemyBehavior>().enabled = false;
+        }
+
+        if(gameObject.tag == "Trout")
+        {
+            trout = gameObject;
+            trout.GetComponent<Animator>().SetBool("TroutSpin", true);
         }
     }
 
@@ -47,5 +55,13 @@ public class GrappleOnto : MonoBehaviour
         //disable the line and the joint
         joint.enabled = false;
         line.enabled = false;
+        
+        if(trout != null) 
+        { 
+            trout.GetComponent<Animator>().SetBool("TroutSpin", false);
+            trout.GetComponent<Animator>().enabled = false;
+            trout.transform.localRotation = Quaternion.identity;
+            trout.GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
+        }
     }
 }
