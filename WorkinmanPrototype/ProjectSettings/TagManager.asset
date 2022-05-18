@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - Enemy
   - Trout
+  - Water
+  - Door
+  - Cloud
   layers:
   - Default
   - TransparentFX
@@ -43,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: boat
+    uniqueID: 728006111
     locked: 0

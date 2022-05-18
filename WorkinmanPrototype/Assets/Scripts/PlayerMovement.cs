@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         if (rigidBody.velocity == new Vector2(0.0f, 0.0f))
         {
             transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, 0)
-                * Time.deltaTime * 5.0f;
+            * Time.deltaTime * 5.0f;
         }
 
         //change the sprite to face the proper direction

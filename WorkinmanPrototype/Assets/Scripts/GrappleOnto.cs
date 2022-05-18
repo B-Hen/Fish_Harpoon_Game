@@ -9,6 +9,11 @@ public class GrappleOnto : MonoBehaviour
     private DistanceJoint2D joint;
     public Sprite enemyDead;
     private GameObject trout;
+    public AudioSource harpoonSound;
+    public AudioSource enemyDeadSound;
+    public AudioSource cloudTouchSound;
+
+    public AudioSource[] fishSounds;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +25,7 @@ public class GrappleOnto : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(gameObject.tag);
-
+        harpoonSound.Play();
         //get the position of the mouse
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -37,16 +41,29 @@ public class GrappleOnto : MonoBehaviour
         line.enabled = true;
 
         //check to see if you grappled onto the enemy if so change the sprite and disable the enemy
-        if (gameObject.tag == "Enemy")
+        if (gameObject.tag == "Enemy" && gameObject.GetComponent<EnemyBehavior>().enabled)
         {
+            enemyDeadSound.Play();
             gameObject.GetComponent<SpriteRenderer>().sprite = enemyDead;
             gameObject.GetComponent<EnemyBehavior>().enabled = false;
+            ManageScene.score += 25;
+            player.GetComponent<ManageScene>().scoreText.text = "Score: " + ManageScene.score;
         }
 
-        if(gameObject.tag == "Trout")
+        if(gameObject.tag == "Trout" && gameObject.GetComponent<Animator>().enabled)
         {
+            int index = Random.Range(0, 3);
+            fishSounds[index].Play();
+
             trout = gameObject;
             trout.GetComponent<Animator>().SetBool("TroutSpin", true);
+            ManageScene.score += 100;
+            player.GetComponent<ManageScene>().scoreText.text = "Score: " + ManageScene.score;
+            player.GetComponent<ManageScene>().fishAmount++;
+        }
+        if(gameObject.tag == "Cloud")
+        {
+            cloudTouchSound.Play();
         }
     }
 

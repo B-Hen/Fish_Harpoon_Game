@@ -8,6 +8,8 @@ public class BulletBehavoir : MonoBehaviour
     Vector3 targetPosition;
     float moveSpeed;
     float speed;
+    Rigidbody2D rigidBody;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -15,18 +17,24 @@ public class BulletBehavoir : MonoBehaviour
         player = GameObject.Find("Player");
         targetPosition = player.transform.position;
         speed = 10f;
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        timer = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
         transform.position = Vector2.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
-
-        //if the bullet reaches the target positon without hitting the target destory it
-        if(transform.position == targetPosition) { Destroy(gameObject); }
+        if(timer <= 0) { Destroy(gameObject); }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
