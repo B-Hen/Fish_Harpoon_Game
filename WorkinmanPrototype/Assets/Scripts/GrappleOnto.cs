@@ -1,9 +1,15 @@
+////////////////////////////////////////////////////////////////
+//Name: Breanna Henriquez 
+//Purpose: To handle the grappling aspect of the game
+////////////////////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GrappleOnto : MonoBehaviour
 {
+    //Variables
     private GameObject player;
     private LineRenderer line;
     private DistanceJoint2D joint;
@@ -12,12 +18,12 @@ public class GrappleOnto : MonoBehaviour
     public AudioSource harpoonSound;
     public AudioSource enemyDeadSound;
     public AudioSource cloudTouchSound;
-
     public AudioSource[] fishSounds;
 
     // Start is called before the first frame update
     void Start()
     {
+        //find the different components
         player = GameObject.Find("Player");
         line = player.GetComponent<LineRenderer>();
         joint = player.GetComponent<DistanceJoint2D>();
@@ -50,6 +56,7 @@ public class GrappleOnto : MonoBehaviour
             player.GetComponent<ManageScene>().scoreText.text = "Score: " + ManageScene.score;
         }
 
+        //check to see if you grappled onto the fish is so disable the sprite and play a random fish sound
         if(gameObject.tag == "Trout" && gameObject.GetComponent<Animator>().enabled)
         {
             int index = Random.Range(0, 3);
@@ -59,8 +66,10 @@ public class GrappleOnto : MonoBehaviour
             trout.GetComponent<Animator>().SetBool("TroutSpin", true);
             ManageScene.score += 100;
             player.GetComponent<ManageScene>().scoreText.text = "Score: " + ManageScene.score;
-            player.GetComponent<ManageScene>().fishAmount++;
+            ManageScene.fishAmount++;
+            player.GetComponent<ManageScene>().fishText.text = "Fish: " + ManageScene.fishAmount;
         }
+        //check to see if the game object is a cloud if so play cloud sound
         if(gameObject.tag == "Cloud")
         {
             cloudTouchSound.Play();
@@ -73,6 +82,7 @@ public class GrappleOnto : MonoBehaviour
         joint.enabled = false;
         line.enabled = false;
         
+        //if its a trout disable the ani,ation playing and gray out the fish
         if(trout != null) 
         { 
             trout.GetComponent<Animator>().SetBool("TroutSpin", false);

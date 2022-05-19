@@ -1,15 +1,24 @@
+/////////////////////////////////////////////////////
+//Name: Breanna Henriquez 
+//Purpose: To handle player movement 
+/////////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Rigidbody2D
     public Rigidbody2D rigidBody;
+
+    //Float
     float forceSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        //set the speed
         forceSpeed = 0.5f;
     }
 

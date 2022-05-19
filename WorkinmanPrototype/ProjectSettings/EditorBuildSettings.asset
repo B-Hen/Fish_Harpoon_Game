@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lore.unity
     guid: 81153058439bcaf4d9ac550f43d0930e
   - enabled: 0
-    path: Assets/Scenes/Instructions.unity
+    path: 
     guid: 6fd69aa9d6036da40b95118e7fce2360
   - enabled: 1
     path: Assets/Scenes/InstructionsScreen.unity
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: c240c567193907145859b51e11eaa1c8
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: c5e0d43d0c5a58a4d9285e2e90ce8f2a
   m_configObjects: {}

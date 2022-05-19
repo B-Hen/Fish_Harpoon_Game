@@ -1,11 +1,18 @@
+////////////////////////////////////////////////////////////////////////
+//Name:Breanna Henriquez 
+//Purpose: to enable the joints and lines for the harpoon
+////////////////////////////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HarpoonGrapple : MonoBehaviour
 {
-    public GameObject player;
+    //Line
     public LineRenderer line;
+
+    //Joint
     public DistanceJoint2D joint;
 
     // Start is called before the first frame update
